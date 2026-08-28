@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>NutriVida</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script src="assets/js/main.js" defer></script>
+    </head>
+    <body>
+        <header>
+        <!-- Fila superior del menú -->
+        <div class="top-bar">
+            <div class="logo">
+                <h1>NutriVida</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="cart">
+                <a href="carrito.html">🛒 Cart (0)</a>
+            </div>
+        </div>
+
+        <!-- Opciones de usuario -->
+        <div class="user-links">
+            <a href="login.html">Iniciar sesión</a> | 
+            <a href="registro.html">Registrar usuario</a>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <!-- 1. Banner Principal / Hero -->
+        <section class="hero">
+            <div class="hero-text">
+                <h2>TIENDA ONLINE</h2>
+                <p>Nuestra tienda ofrece productos de alta calidad pensados para tus necesidades diarias. Explora nuestro catálogo y descubre nuestras ofertas.</p>
+                <a href="#productos" class="btn">ver productos</a>
+            </div>
+            <div class="hero-image">
+                <img src="assets/img/tienda.jpg" alt="Imagen de la tienda">
+            </div>
+        </section>
+
+        <!-- 2. Sección de Productos -->
+        <section id="productos" class="productos-lista">
+            <h3>Nuestros Productos</h3>
+            <div class="grid-productos">
+                
+                <!-- Producto 1 -->
+                <article class="producto-card">
+                    <img src="assets/img/producto1.jpg" alt="Producto 1">
+                    <h4>Product Title</h4>
+                    <p>Attributes</p>
+                    <p class="precio">$00.00</p>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="producto-card">
+                    <img src="assets/img/producto2.jpg" alt="Producto 2">
+                    <h4>Product Title</h4>
+                    <p>Attributes</p>
+                    <p class="precio">$00.00</p>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="producto-card">
+                    <img src="assets/img/producto3.jpg" alt="Producto 3">
+                    <h4>Product Title</h4>
+                    <p>Attributes</p>
+                    <p class="precio">$00.00</p>
+                </article>
+
+                <!-- Producto 4 -->
+                <article class="producto-card">
+                    <img src="assets/img/producto4.jpg" alt="Producto 4">
+                    <h4>Product Title</h4>
+                    <p>Attributes</p>
+                    <p class="precio">$00.00</p>
+                </article>
+
+            </div>
+        </section>
+    </main>
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="footer-container">
+            <!-- Nombre de la tienda -->
+            <div class="footer-logo">
+                <p>Clínica Nutricional NutriVida</p>
+            </div>
+
+            <!-- Categorías -->
+            <div class="footer-categories">
+                <a href="#">Category X</a> | 
+                <a href="#">Category Y</a> | 
+                <a href="#">Category Z</a>
+            </div>
+
+            <!-- Suscripción a Newsletter -->
+            <div class="footer-newsletter">
+                <p>Mantente en Contacto! Recibe nuestras Ultimas Noticias</p>
+                <form>
+                    <input type="email" placeholder="Ingresar Email" required>
+                    <button type="submit">Subscribirse</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+    </body>
+</html>
