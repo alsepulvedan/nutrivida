@@ -171,3 +171,61 @@ footer {
     border: none;
     cursor: pointer;
 }
+
+/* --- ESTILOS PARA FORMULARIOS (REGISTRO Y LOGIN) --- */
+.form-container {
+    max-width: 550px;
+    margin: 40px auto;
+    border: 2px solid #333;
+    padding: 30px;
+    background-color: #f0f0f0;
+}
+
+.form-container h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: #ccc;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #999;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.form-group input, 
+.form-group select {
+    padding: 8px;
+    border: 1px solid #666;
+    background-color: #fff;
+    font-size: 0.9rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.form-actions .btn {
+    padding: 8px 30px;
+    cursor: pointer;
+}
