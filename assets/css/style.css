@@ -376,3 +376,131 @@ footer {
     display: flex;
     gap: 15px;
 }
+
+/* =======================================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ======================================================= */
+
+/* 1. TABLETAS (≥ 768px) */
+@media screen and (min-width: 768px) {
+    /* Grilla de productos pasa a 2 columnas */
+    .grid-productos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Formulario en dos columnas para Region y Comuna */
+    .form-row {
+        flex-direction: row;
+    }
+}
+
+/* 2. ESCRITORIO (≥ 1280px) */
+@media screen and (min-width: 1280px) {
+    /* Grilla de productos pasa a 4 columnas */
+    .grid-productos {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Hero Banner en horizontal */
+    .hero {
+        flex-direction: row;
+    }
+
+    /* Detalle de producto en horizontal */
+    .detalle-container {
+        flex-direction: row;
+    }
+}
+
+/* 3. MÓVILES (Hasta 767px) - Ajustes de apilamiento y adaptabilidad */
+@media screen and (max-width: 767px) {
+    /* Encabezado apilado */
+    .top-bar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Hero Banner apilado */
+    .hero {
+        flex-direction: column;
+    }
+
+    /* Grilla de productos a 1 sola columna */
+    .grid-productos {
+        grid-template-columns: 1fr;
+    }
+
+    /* Detalle de producto apilado */
+    .detalle-container {
+        flex-direction: column;
+    }
+
+    /* Campos de formulario apilados */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Tabla de carrito responsiva */
+    .tabla-carrito, 
+    .tabla-carrito thead, 
+    .tabla-carrito tbody, 
+    .tabla-carrito th, 
+    .tabla-carrito td, 
+    .tabla-carrito tr {
+        display: block;
+    }
+
+    .tabla-carrito thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .tabla-carrito tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+    }
+
+    .tabla-carrito td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    .tabla-carrito td:before {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    /* Etiquetas de la tabla para móvil */
+    .tabla-carrito td:nth-of-type(1):before { content: "Producto"; }
+    .tabla-carrito td:nth-of-type(2):before { content: "Precio"; }
+    .tabla-carrito td:nth-of-type(3):before { content: "Cantidad"; }
+    .tabla-carrito td:nth-of-type(4):before { content: "Subtotal"; }
+    .tabla-carrito td:nth-of-type(5):before { content: "Acción"; }
+
+    .prod-td {
+        justify-content: flex-end;
+    }
+
+    /* Footer apilado */
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
