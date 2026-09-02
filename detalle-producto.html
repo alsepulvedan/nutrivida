@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NutriVida - Detalle de Producto</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="top-bar">
+            <div class="logo">
+                <h1>NutriVida</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="cart">
+                <a href="carrito.html">🛒 Cart (0)</a>
+            </div>
+        </div>
+
+        <div class="user-links">
+            <a href="login.html">Iniciar sesión</a> | 
+            <a href="registro.html">Registrar usuario</a>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL: DETALLE DE PRODUCTO -->
+    <main>
+        <section class="detalle-container">
+            <div class="detalle-imagen">
+                <img src="assets/img/producto1.jpg" alt="Proteína Suero Whey">
+            </div>
+
+            <div class="detalle-info">
+                <h2>Proteína Suero Whey 1kg</h2>
+                <p class="categoria">Categoría: Proteínas / Recuperación</p>
+                <p class="precio">$24.990</p>
+                
+                <p class="descripcion">
+                    Suplemento alimenticio a base de proteína concentrada de suero de leche de alta calidad. 
+                    Ideal para favorecer la recuperación muscular post-entrenamiento y mantener el rendimiento físico óptimo.
+                </p>
+
+                <div class="acciones-compra">
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" value="1" min="1" max="99">
+                    <button id="btn-agregar" class="btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <p>Site Name</p>
+            </div>
+
+            <div class="footer-categories">
+                <a href="#">Category X</a> | 
+                <a href="#">Category Y</a> | 
+                <a href="#">Category Z</a>
+            </div>
+
+            <div class="footer-newsletter">
+                <p>Stay In Touch! Join our Newsletter</p>
+                <form>
+                    <input type="email" placeholder="Enter Email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

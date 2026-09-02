@@ -229,3 +229,150 @@ footer {
     padding: 8px 30px;
     cursor: pointer;
 }
+
+.producto-card .btn {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    width: 100%;
+}
+
+/* --- VISTA DETALLE DE PRODUCTO --- */
+.detalle-container {
+    display: flex;
+    gap: 30px;
+    background-color: #f9f9f9;
+    border: 2px solid #333;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+.detalle-imagen {
+    flex: 1;
+}
+
+.detalle-imagen img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border: 1px solid #666;
+    background-color: #fff;
+}
+
+.detalle-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.detalle-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.detalle-info .categoria {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.detalle-info .precio {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.detalle-info .descripcion {
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.acciones-compra {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.acciones-compra input[type="number"] {
+    width: 60px;
+    padding: 6px;
+    border: 1px solid #666;
+    text-align: center;
+}
+
+/* --- VISTA CARRITO DE COMPRAS --- */
+.carrito-container {
+    background-color: #f9f9f9;
+    border: 2px solid #333;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+.carrito-container h2 {
+    margin-bottom: 20px;
+}
+
+.tabla-carrito {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+.tabla-carrito th, 
+.tabla-carrito td {
+    border: 1px solid #999;
+    padding: 12px;
+    text-align: center;
+}
+
+.tabla-carrito th {
+    background-color: #e0e0e0;
+}
+
+.prod-td {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+}
+
+.prod-td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 1px solid #666;
+}
+
+.cant-input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+}
+
+.btn-eliminar {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.resumen-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #333;
+    padding-top: 20px;
+}
+
+.resumen-carrito p {
+    font-size: 1.3rem;
+}
+
+.acciones-carrito {
+    display: flex;
+    gap: 15px;
+}
