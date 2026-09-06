@@ -99,4 +99,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ==========================================
+    // 3. VALIDACIÓN DEL FORMULARIO DE CONTACTO
+    // ==========================================
+
+    const formContacto = document.getElementById('form-contacto');
+    if (formContacto) {
+    formContacto.addEventListener('submit', (e) => {
+        e.preventDefault(); // detencion del envio por defecto.
+         
+        // captura de valores escritos en los campos
+        const nombre = document.getElementById('contacto-nombre').value.trim();
+        const correo = document.getElementById('contacto-correo').value.trim();
+        const contenido = document.getElementById('contacto-contenido').value.trim();
+       
+
+        //Reglas de validacion:
+
+
+        // Lista de dominios permitidos
+        const dominiosPermitidos = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
+        
+        // Validación: nombre requerido, máx 100 caracteres y evitar campos vacios.
+        if (nombre === '') {
+            alert('Por favor, ingresa tu nombre.');
+            return;
+        }
+        if (nombre.length > 100) {
+            alert('El nombre no puede superar los 100 caracteres.');
+            return;
+        }
+      
+        // Validación: correo máx 100 caracteres,evitar nulo y dominio permitido
+        if (correo === '') {
+             alert('Por favor, ingresa tu correo.');
+            return;
+        }
+        if (correo.length > 100) {
+            alert('El correo no puede superar los 100 caracteres.');
+            return;
+        }
+        
+        const dominioValido = dominiosPermitidos.some(dominio => correo.endsWith(dominio));
+        if (!dominioValido) {
+            alert('El correo debe ser @duoc.cl, @profesor.duoc.cl o @gmail.com');
+            return;
+        }
+
+        // Validación: contenido requerido, máx 500 caracteres y evitar contenidos vacios
+        if (contenido === '') {
+            alert('Por favor, escribe tu mensaje.');
+            return;
+        }
+        if (contenido.length > 500) {
+            alert('El mensaje no puede superar los 500 caracteres.');
+            return;
+        }
+
+        // Al estar cumplidas las validaciones, se envia mensaje de  exito
+        alert('¡Mensaje enviado con éxito!');
+        formContacto.reset();
+        });
+
+    }
 });
