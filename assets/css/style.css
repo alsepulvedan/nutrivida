@@ -411,7 +411,11 @@ footer {
         flex-direction: row;
     }
 }
-
+      /* Boton para regresar atras.*/
+    .btn-volver {
+    display: inline-block;
+    margin-bottom: 15px;
+}
 /* 3. MÓVILES (Hasta 767px) - Ajustes de apilamiento y adaptabilidad */
 @media screen and (max-width: 767px) {
     /* Encabezado apilado */
