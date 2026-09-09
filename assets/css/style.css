@@ -36,8 +36,8 @@ nav ul {
     gap: 15px;
 }
 
-nav a, .user-links a, .footer-categories a {
-    color: #0044cc;
+nav a, .user-links a, .footer-categories a, .cart a {
+    color: #4a3f2a;
     text-decoration: underline;
 }
 
@@ -96,7 +96,7 @@ main {
     display: inline-block;
     padding: 8px 16px;
     border: 2px solid #000;
-    background-color: #fff;
+    background-color: rgba(245, 245, 220, 0.9);
     color: #000;
     text-decoration: none;
     font-weight: bold;
@@ -116,7 +116,7 @@ main {
 .producto-card {
     border: 1px solid #999;
     padding: 15px;
-    background-color: #ececec;
+    background-color: rgba(245, 245, 220, 0.7);
     text-align: left;
 }
 
@@ -131,7 +131,7 @@ main {
 
 .producto-card h4 {
     font-size: 0.9rem;
-    color: #0044cc;
+    color: #4a3f2a;
     margin-bottom: 5px;
 }
 
@@ -145,6 +145,11 @@ main {
     text-align: right;
 }
 
+.blog-card img {
+    width: 100%;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
 /* --- PIE DE PÁGINA (FOOTER) --- */
 footer {
     background-color: rgba(245, 245, 220, 0.75);
@@ -311,7 +316,7 @@ footer {
 
 /* --- VISTA CARRITO DE COMPRAS --- */
 .carrito-container {
-    background-color: #f9f9f9;
+    background-color: rgba(245, 245, 220, 0.9);
     border: 2px solid #333;
     padding: 30px;
     margin: 20px 0;
@@ -335,7 +340,7 @@ footer {
 }
 
 .tabla-carrito th {
-    background-color: #e0e0e0;
+    background-color: rgba(245, 245, 220, 1);
 }
 
 .prod-td {
@@ -384,7 +389,7 @@ footer {
 }
 
 /* =======================================================
-   RESPONSIVE DESIGN (MEDIA QUERIES)
+   RESPONSIVE DESIGN 
    ======================================================= */
 
 /* 1. TABLETAS (≥ 768px) */
