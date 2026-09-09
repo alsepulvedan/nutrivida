@@ -9,11 +9,17 @@ body {
     font-family: Arial, sans-serif;
     color: #333;
     line-height: 1.4;
+    background-color: #f4f4f4; /* color de respaldo mientras carga la imagen */
+    background-image: url("../img/tiendafondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* opcional: efecto parallax al hacer scroll */
 }
 
 /* --- ENCABEZADO (HEADER) --- */
 header {
-    background-color: #e0e0e0;
+    background-color: rgba(245, 245, 220, 0.75);
     padding: 15px 30px;
     border-bottom: 2px solid #ccc;
 }
@@ -55,7 +61,7 @@ main {
     padding: 30px;
     gap: 20px;
     margin-bottom: 40px;
-    background-color: #f9f9f9;
+    background-color: rgba(245, 245, 220, 0.75);
 }
 
 .hero-text {
@@ -141,7 +147,7 @@ main {
 
 /* --- PIE DE PÁGINA (FOOTER) --- */
 footer {
-    background-color: #e0e0e0;
+    background-color: rgba(245, 245, 220, 0.75);
     border-top: 2px solid #ccc;
     padding: 20px 30px;
     margin-top: 40px;
@@ -178,7 +184,7 @@ footer {
     margin: 40px auto;
     border: 2px solid #333;
     padding: 30px;
-    background-color: #f0f0f0;
+    background-color: rgba(245, 245, 220, 0.75);
 }
 
 .form-container h2 {
@@ -242,7 +248,7 @@ footer {
 .detalle-container {
     display: flex;
     gap: 30px;
-    background-color: #f9f9f9;
+    background-color: rgba(245, 245, 220, 0.75);
     border: 2px solid #333;
     padding: 30px;
     margin: 20px 0;
