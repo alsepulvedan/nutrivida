@@ -5,151 +5,189 @@
 INFORMACIÓN GENERAL:
 --------------------
 - Asignatura: Desarrollo Full Stack II (DSY1104) - Duoc UC
-- Evaluación: Parcial 1 (E1)
+- Evaluación actual: Evaluación 2 (30%) / Continuación de Parcial 1
 - Proyecto: Clínica Nutricional y Tienda Online "NutriVida"
 - Integrantes: Michelle Serrano, Ismael Sanchez, Alvaro Sepulveda
-- Stack Tecnológico: React 19, Vite 8, React Router DOM 7, CSS3, JavaScript (ESM)
+- Stack Tecnológico:
+  * React 19.3
+  * Vite 8.3 (Bundler ESM ultrarrápido)
+  * React Router DOM 7.18
+  * Bootstrap 5.3 & Bootstrap Icons 1.13
+  * CSS3 personalizado unificado (style.css)
+  * JavaScript ES6+ (Base de datos simulada y persistencia en localStorage)
 
 
-1. OBJETIVO DEL TRABAJO REALIZADO:
-----------------------------------
-Migración completa de la maqueta prototipo original (páginas estáticas en HTML5, 
-CSS3 y lógica en vanilla JS) a una Aplicación de Página Única (SPA) moderna 
-construida con React y empaquetada con Vite, manteniendo al 100% el diseño visual,
-las imágenes originales y las reglas de negocio/validación solicitadas en la pauta.
+1. OBJETIVO Y ALCANCE (EVALUACIÓN 1 Y EVALUACIÓN 2):
+----------------------------------------------------
+- Fase 1 (Evaluación 1):
+  Migración completa de la maqueta HTML5/CSS3/JS estática a una SPA (Single Page 
+  Application) modular en React, con rutas de navegación fluidas, carrito de compras 
+  persistente y validación de formularios institucionales (@duoc.cl).
+
+- Fase 2 (Evaluación 2 - "Anexo 1 Instrucciones.pdf"):
+  * Incorporación de Bootstrap 5 y Bootstrap Icons para diseño responsivo moderno.
+  * Creación de una fuente de datos simulada en JavaScript ('dataService.js') que 
+    actúa como base de datos en memoria y localStorage con operaciones CRUD completas.
+  * Expansión de la tienda con nuevos flujos comerciales (según diagrama oficial):
+    - Categorías de productos ('Categorias.jsx').
+    - Productos en promoción / rebajas ('Ofertas.jsx').
+    - Proceso de pago y despacho ('Checkout.jsx') con autocompletado de usuario.
+    - Pantalla de confirmación con boleta/código de orden ('CompraExitosa.jsx').
+    - Pantalla de gestión de fallos de pago y reintento ('CompraError.jsx').
+  * Cuentas de usuario de prueba para testing y demostración de roles.
 
 
-2. ESTADO INICIAL VS. ESTADO FINAL:
------------------------------------
-- Estado Inicial:
-  * Existían archivos HTML independientes (index.html, productos.html, carrito.html, etc.).
-  * Se habían instalado dependencias en package.json pero faltaba la configuración de Vite.
-  * 'src/main.jsx' estaba en 0 bytes (React nunca se montaba).
-  * 'index.html' no tenía el <div id="root"></div> ni el script hacia main.jsx.
-  * package.json no tenía scripts de inicio ("dev", "build") y usaba "commonjs".
-  * 'node_modules' se había subido por error al repositorio sin un '.gitignore'.
-  * Las carpetas 'src/components' y 'src/pages' estaban vacías.
+2. CUENTAS DE USUARIO PRECONFIGURADAS (DEMO / TESTING):
+--------------------------------------------------------
+Para facilitar las pruebas de autenticación y roles, 'dataService.js' incluye:
 
-- Estado Final:
-  * Proyecto 100% operativo en React 19 + Vite.
-  * Enrutamiento dinámico mediante React Router DOM.
-  * Estado global del carrito mediante React Context API con persistencia en localStorage.
-  * Todos los formularios con validaciones en tiempo real (según la pauta de Duoc UC).
-  * Repositorio optimizado: '.gitignore' agregado y 'node_modules' removido del seguimiento de Git.
-  * Compilación validada sin errores ('npm run build' exitoso).
+1. Administrador:
+   - Correo: admin@nutrivida.cl
+   - Contraseña: admin123
+   - Rol: admin (Acceso a gestión y métricas)
+
+2. Nutricionista / Profesional Clínico:
+   - Correo: nutri@nutrivida.cl
+   - Contraseña: nutri123
+   - Rol: nutricionista (Acceso a agenda médica y fichas clínicas)
+
+3. Cliente / Paciente:
+   - Correo: cliente@duoc.cl
+   - Contraseña: cliente123
+   - Rol: cliente (Historial de compras y citas)
+
+* Además, cualquier usuario registrado en la vista '/registro' se almacena 
+  automáticamente en 'localStorage' como rol 'cliente'.
 
 
 3. ESTRUCTURA COMPLETA DEL PROYECTO:
 ------------------------------------
 nutrivida/
-├── .gitignore                     # Ignora node_modules, dist y archivos del sistema
+├── .gitignore                     # Excluye node_modules, dist y archivos del sistema
+├── Anexo 1 Instrucciones.pdf      # Pauta oficial de la Evaluación 2 (30%) de Duoc UC
 ├── Contexto.txt                   # Documento de contexto y guía técnica (este archivo)
 ├── index.html                     # Punto de entrada HTML para Vite (monta React en #root)
 ├── index_backup.html              # Respaldo del index.html estático original
 ├── package.json                   # Scripts ("dev", "build", "preview") y dependencias
 ├── vite.config.js                 # Configuración de Vite con plugin oficial de React
 ├── public/                        # Archivos estáticos accesibles directamente
-│   └── assets/                    # Imágenes y CSS públicos
+│   └── assets/                    # Imágenes y estilos públicos
 ├── assets/                        # Copia de recursos estáticos originales
 ├── src/
-│   ├── main.jsx                   # Montaje principal de React (ReactDOM.createRoot)
+│   ├── main.jsx                   # Montaje principal de React, Bootstrap y CSS global
 │   ├── App.jsx                    # Configuración de rutas (React Router) y Layout global
-│   ├── assets/                    # Recursos importados por los componentes
-│   │   ├── css/
-│   │   │   └── style.css          # Estilos unificados + clase .active-link
-│   │   └── img/                   # Imágenes de productos, blogs y banners
-│   ├── components/                # Componentes modulares y reutilizables
-│   │   ├── Header.jsx             # Barra superior, navegación con NavLink y contador de carrito
-│   │   ├── Footer.jsx             # Pie de página con enlaces y formulario de Newsletter
-│   │   └── ProductCard.jsx        # Tarjeta reutilizable de catálogo de producto
+│   ├── assets/
+│   │   ├── css/style.css          # Estilos propios + clase .active-link
+│   │   └── img/                   # Fotografías de productos, blogs y fondo
+│   ├── components/
+│   │   ├── Header.jsx             # Barra superior con NavLink, sesión y contador de carrito
+│   │   ├── Footer.jsx             # Pie de página con enlaces y suscripción a Newsletter
+│   │   └── ProductCard.jsx        # Tarjeta reutilizable con insignia de oferta/descuento
 │   ├── context/
-│   │   └── CartContext.jsx        # Estado global del carrito + sincronización con localStorage
+│   │   ├── CartContext.jsx        # Estado global del carrito y persistencia en localStorage
+│   │   └── DataContext.jsx        # Estado reactivo global conectado a dataService (CRUD)
 │   ├── data/
-│   │   ├── products.js            # Catálogo de datos de productos y formateador de precios
-│   │   └── blogs.js               # Artículos de blog con contenido estructurado
-│   └── pages/                     # Páginas / Vistas del sistema
-│       ├── Home.jsx               # Inicio: Banner Hero + Productos destacados
-│       ├── Productos.jsx          # Catálogo completo de productos
-│       ├── DetalleProducto.jsx    # Detalle con ruta dinámica (/productos/:id) y selector de cantidad
-│       ├── Nosotros.jsx           # Sobre la clínica: Misión y Visión (RF3)
-│       ├── Carrito.jsx            # Tabla del carrito con totales, ajuste de cantidades y eliminar
-│       ├── Blogs.jsx              # Listado de noticias y artículos
+│   │   ├── products.js            # Referencias y datos iniciales de catálogo
+│   │   └── blogs.js               # Artículos del blog de salud
+│   ├── services/
+│   │   └── dataService.js         # Base de datos simulada en JS (CRUD, stock, órdenes, auth)
+│   └── pages/                     # Vistas de la aplicación
+│       ├── Home.jsx               # Portada: Banner Hero + Productos destacados
+│       ├── Productos.jsx          # Catálogo completo con buscador y filtros
+│       ├── DetalleProducto.jsx    # Ficha del producto (/productos/:id) con selector de cantidad
+│       ├── Categorias.jsx         # Vista de navegación de productos por categorías
+│       ├── Ofertas.jsx            # Vista exclusiva de productos con descuento
+│       ├── Checkout.jsx           # Formulario de pago, despacho y resumen de compra
+│       ├── CompraExitosa.jsx      # Boleta final con número de orden (#ORDER...)
+│       ├── CompraError.jsx        # Pantalla de rechazo de pago con botón de reintento
+│       ├── Carrito.jsx            # Tabla interactiva con subtotales, totales y botón a checkout
+│       ├── Nosotros.jsx           # Misión y Visión de la clínica (RF3)
+│       ├── Blogs.jsx              # Artículos de divulgación nutricional
 │       ├── DetalleBlog.jsx        # Lectura individual de blog (/blogs/:id)
-│       ├── Contacto.jsx           # Formulario con validación de dominios institucionales
-│       ├── Login.jsx              # Formulario de inicio de sesión
-│       └── Registro.jsx           # Registro con validación de contraseñas, región y comuna
+│       ├── Contacto.jsx           # Formulario validado con dominios institucionales
+│       ├── Login.jsx              # Formulario de autenticación con credenciales demo
+│       └── Registro.jsx           # Formulario de registro con selectores de región y comuna
 
 
-4. CUMPLIMIENTO DE REQUERIMIENTOS FUNCIONALES (PAUTA / ERS):
-------------------------------------------------------------
-- RF1: Registro de Usuario ('Registro.jsx'):
-  * Validación de nombre obligatorio.
-  * Formato válido de correo electrónico y confirmación obligatoria coincidente.
-  * Contraseña mínima de 6 caracteres y confirmación coincidente.
-  * Selección obligatoria de Región y Comuna según pauta chilena.
-  * Redirección a Login tras registro exitoso.
+4. SERVICIO DE DATOS SIMULADO ('dataService.js'):
+-------------------------------------------------
+Cumpliendo el requisito del "Archivo de datos en JavaScript", 'src/services/dataService.js' 
+provee una API completa en JavaScript con persistencia en localStorage:
 
-- RF2: Inicio de Sesión ('Login.jsx'):
-  * Campos controlados para correo y contraseña con feedback al usuario.
+- CRUD de Productos:
+  * getProducts(), getProductById(id), getProductsByCategory(catId), getProductsInOffer()
+  * getCriticalStockProducts(): detecta productos con stock <= stockCritico (alerta administrativa)
+  * createProduct(data), updateProduct(id, data), deleteProduct(id)
 
-- RF3: Navegación del Sitio ('Header.jsx' y 'App.jsx'):
-  * Enlaces SPA sin recargar la página: Home, Productos, Nosotros, Blogs, Contacto y Carrito.
-  * El enlace activo se destaca visualmente gracias a NavLink y la clase '.active-link'.
+- CRUD de Categorías:
+  * getCategories(), getCategoryById(id)
+  * createCategory(data), updateCategory(id, data), deleteCategory(id)
 
-- RF4: Listado de Productos ('Productos.jsx' y 'ProductCard.jsx'):
-  * Despliegue de tarjetas con imagen, nombre, categoría y precio en formato chileno ($24.990).
-  * Botón directo hacia el detalle del producto.
+- CRUD de Usuarios y Sesión:
+  * getUsers(), getUserById(id)
+  * createUser(data), updateUser(id, data), deleteUser(id)
+  * login(email, password), logout(), getCurrentUser()
 
-- RF5: Detalle de Producto ('DetalleProducto.jsx'):
-  * Ruta dinámica '/productos/:id'.
-  * Muestra imagen amplia, categoría, descripción detallada y precio.
-  * Input numérico para elegir cantidad (1 a 99) y botón "Añadir al carrito" con aviso visual.
-
-- RF6 y RF7: Carrito de Compras y Persistencia ('CartContext.jsx' y 'Carrito.jsx'):
-  * Conservación automática del carrito en el navegador usando 'localStorage'.
-  * Modificación de cantidad de productos en tiempo real con recálculo de subtotales y total general.
-  * Eliminación de ítems del carrito.
-  * Contador global de productos reflejado inmediatamente en el Header: "🛒 Carrito (N)".
-  * Vista de estado vacío con botón para volver a la tienda.
-
-- RF8: Formulario de Contacto ('Contacto.jsx'):
-  * Nombre requerido con límite de 100 caracteres.
-  * Correo requerido con validación de dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com.
-  * Mensaje requerido con límite de 500 caracteres.
-  * Limpieza del formulario y mensaje de confirmación tras el envío.
+- Gestión de Órdenes (Checkout):
+  * createOrder(orderData): genera ID único, fecha, detalle de productos, resta stock automáticamente.
+  * getOrders(), getOrderById(id), getOrdersByUser(userId)
 
 
-5. INSTRUCCIONES PARA EJECUTAR EN CUALQUIER COMPUTADORA:
+5. MAPA DE RUTAS DE NAVEGACIÓN:
+-------------------------------
+/                    -> Home (Inicio)
+/productos           -> Catálogo de productos
+/productos/:id       -> Ficha de detalle de producto
+/categorias          -> Productos filtrados por categoría
+/ofertas             -> Productos en oferta con descuento
+/carrito             -> Carrito de compras
+/checkout            -> Pasarela de despacho y pago
+/compra-exitosa      -> Confirmación y comprobante de compra
+/compra-error        -> Aviso de error en el pago
+/nosotros            -> Información institucional de la clínica
+/blogs               -> Listado de artículos informativos
+/blogs/:id           -> Detalle del artículo
+/contacto            -> Formulario de contacto (@duoc.cl)
+/login               -> Inicio de sesión
+/registro            -> Registro de nuevo usuario
+
+
+6. INSTRUCCIONES PARA EJECUTAR EN CUALQUIER COMPUTADORA:
 ---------------------------------------------------------
-1. Requisitos:
-   - Tener instalado Node.js (versión 18 o superior recomendada).
-   - Tener Git instalado (si se clona desde GitHub).
+1. Requisitos previos:
+   - Node.js versión 18 o superior instalado.
+   - Navegador web moderno (Chrome, Edge, Firefox, Safari).
 
-2. Pasos de instalación y ejecución:
-   a) Abrir una terminal en la carpeta raíz del proyecto ('nutrivida').
-   b) Instalar las dependencias del proyecto:
-      npm install
+2. Instalación de paquetes:
+   Abrir terminal en la carpeta 'nutrivida':
+   
+   npm install
 
-   c) Iniciar el servidor de desarrollo en modo local:
-      npm run dev
+   * NOTA IMPORTANTE (en redes corporativas o de Duoc con proxy SSL):
+     Si npm muestra el error 'UNABLE_TO_VERIFY_LEAF_SIGNATURE', ejecutar:
+     npm install --strict-ssl=false
 
-   d) Abrir el navegador en la URL indicada por la consola:
-      http://localhost:5173/
+3. Iniciar el servidor de desarrollo:
+   npm run dev
 
-3. Generar compilación para producción (Build):
+   Abrir la URL que aparece en la consola (habitualmente http://localhost:5173/).
+
+4. Compilar para producción (Build):
    npm run build
 
-4. Probar la versión de producción localmente:
+   (Genera la carpeta 'dist/' optimizada, verificada sin advertencias ni errores).
+
+5. Previsualizar la versión de producción:
    npm run preview
 
 
-6. ESTADO DE CONTROL DE VERSIONES (GIT):
-----------------------------------------
-- Se creó el archivo '.gitignore' estándar para aplicaciones Node/React.
-- Se desindexó 'node_modules' del seguimiento de Git para evitar subir librerías pesadas.
-- Se creó el commit que consolida la migración:
-  "Migración a React: configuración Vite, rutas, páginas, contexto de carrito y componentes"
-- El árbol de trabajo local se encuentra limpio ('working tree clean'). Para enviar los cambios
-  a GitHub, basta con ejecutar:
-  git push origin main
+7. PRÓXIMOS PASOS SEGÚN ANEXO 1 (EVALUACIÓN 2):
+------------------------------------------------
+1. Panel Administrativo (Figura 9 y 10 del PDF):
+   - Crear el Dashboard administrativo (/admin).
+   - Vistas de gestión de inventario y productos críticos (stock <= 5).
+   - Gestión de usuarios y consulta de órdenes/boletas.
+2. Pruebas Unitarias (Página 11 del PDF):
+   - Configuración y desarrollo de pruebas unitarias para verificar renderizado,
+     propiedades (props), estado (state) y simulación de eventos en componentes.
 ================================================================================
