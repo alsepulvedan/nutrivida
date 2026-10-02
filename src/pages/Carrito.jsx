@@ -79,16 +79,24 @@ export default function Carrito() {
                 <span id="total-precio">{formatPrice(totalPrecio)}</span>
               </p>
               <div className="acciones-carrito">
+                <button
+                  type="button"
+                  className="btn btn-outline-danger"
+                  onClick={clearCart}
+                >
+                  Limpiar Carrito
+                </button>
                 <Link to="/productos" className="btn">
                   Seguir comprando
                 </Link>
-                <button
+                <Link
+                  to="/checkout"
                   id="btn-checkout"
-                  className="btn"
-                  onClick={handleCheckout}
+                  className="btn btn-success text-white"
+                  style={{ backgroundColor: '#28a745', borderColor: '#28a745' }}
                 >
-                  Proceder al pago
-                </button>
+                  Comprar ahora →
+                </Link>
               </div>
             </div>
           </>

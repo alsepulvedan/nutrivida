@@ -1,8 +1,10 @@
 import React from 'react';
-import { products } from '../data/products';
+import { useData } from '../context/DataContext';
 import ProductCard from '../components/ProductCard';
 
 export default function Productos() {
+  const { products } = useData();
+
   return (
     <main>
       <section className="productos-lista">

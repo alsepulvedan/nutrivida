@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { useData } from '../context/DataContext';
 import ProductCard from '../components/ProductCard';
 
 export default function Home() {
+  const { products } = useData();
+
   return (
     <main>
       {/* 1. Banner Principal */}
@@ -14,9 +16,14 @@ export default function Home() {
             Nuestra tienda ofrece productos de alta calidad pensados para tus necesidades
             diarias. Explora nuestro catálogo y descubre nuestras ofertas.
           </p>
-          <Link to="/productos" className="btn">
-            ver productos
-          </Link>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <Link to="/productos" className="btn">
+              ver productos
+            </Link>
+            <Link to="/ofertas" className="btn" style={{ backgroundColor: '#ffc107', borderColor: '#d39e00' }}>
+              ver ofertas 🔥
+            </Link>
+          </div>
         </div>
         <div className="hero-image">
           <img src="/assets/img/tienda.jpg" alt="Imagen de la tienda" />
@@ -27,7 +34,7 @@ export default function Home() {
       <section id="productos" className="productos-lista">
         <h3>Nuestros Productos</h3>
         <div className="grid-productos">
-          {products.map((product) => (
+          {products.slice(0, 4).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

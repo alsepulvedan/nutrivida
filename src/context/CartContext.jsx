@@ -22,6 +22,10 @@ export function CartProvider({ children }) {
 
   const addToCart = (product, cantidad = 1) => {
     const qty = parseInt(cantidad, 10) || 1;
+    const precioEfectivo =
+      product.enOferta && product.precioOferta ? product.precioOferta : product.precio;
+    const productToAdd = { ...product, precio: precioEfectivo };
+
     setCart((prevCart) => {
       const existingIndex = prevCart.findIndex((item) => item.product.id === product.id);
       if (existingIndex > -1) {
@@ -32,7 +36,7 @@ export function CartProvider({ children }) {
         };
         return updated;
       } else {
-        return [...prevCart, { product, cantidad: qty }];
+        return [...prevCart, { product: productToAdd, cantidad: qty }];
       }
     });
   };
