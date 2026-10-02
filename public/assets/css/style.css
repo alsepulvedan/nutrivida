@@ -41,13 +41,6 @@ nav a, .user-links a, .footer-categories a, .cart a {
     text-decoration: underline;
 }
 
-nav a.active-link {
-    font-weight: bold;
-    color: #000;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-
 .user-links {
     text-align: right;
     margin-top: 10px;

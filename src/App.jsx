@@ -1,20 +1,40 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-function Home() {
-  return (
-    <div>
-      <h1>Página de Inicio - NutriVida</h1>
-      <p>Servidor de React funcionando correctamente.</p>
-    </div>
-  );
-}
+import Home from './pages/Home';
+import Productos from './pages/Productos';
+import DetalleProducto from './pages/DetalleProducto';
+import Nosotros from './pages/Nosotros';
+import Carrito from './pages/Carrito';
+import Blogs from './pages/Blogs';
+import DetalleBlog from './pages/DetalleBlog';
+import Contacto from './pages/Contacto';
+import Login from './pages/Login';
+import Registro from './pages/Registro';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/productos" element={<Productos />} />
+          <Route path="/productos/:id" element={<DetalleProducto />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/carrito" element={<Carrito />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:id" element={<DetalleBlog />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </CartProvider>
   );
 }
