@@ -1,0 +1,155 @@
+================================================================================
+                    PROYECTO NUTRIVIDA - CONTEXTO DE DESARROLLO
+================================================================================
+
+INFORMACIÓN GENERAL:
+--------------------
+- Asignatura: Desarrollo Full Stack II (DSY1104) - Duoc UC
+- Evaluación: Parcial 1 (E1)
+- Proyecto: Clínica Nutricional y Tienda Online "NutriVida"
+- Integrantes: Michelle Serrano, Ismael Sanchez, Alvaro Sepulveda
+- Stack Tecnológico: React 19, Vite 8, React Router DOM 7, CSS3, JavaScript (ESM)
+
+
+1. OBJETIVO DEL TRABAJO REALIZADO:
+----------------------------------
+Migración completa de la maqueta prototipo original (páginas estáticas en HTML5, 
+CSS3 y lógica en vanilla JS) a una Aplicación de Página Única (SPA) moderna 
+construida con React y empaquetada con Vite, manteniendo al 100% el diseño visual,
+las imágenes originales y las reglas de negocio/validación solicitadas en la pauta.
+
+
+2. ESTADO INICIAL VS. ESTADO FINAL:
+-----------------------------------
+- Estado Inicial:
+  * Existían archivos HTML independientes (index.html, productos.html, carrito.html, etc.).
+  * Se habían instalado dependencias en package.json pero faltaba la configuración de Vite.
+  * 'src/main.jsx' estaba en 0 bytes (React nunca se montaba).
+  * 'index.html' no tenía el <div id="root"></div> ni el script hacia main.jsx.
+  * package.json no tenía scripts de inicio ("dev", "build") y usaba "commonjs".
+  * 'node_modules' se había subido por error al repositorio sin un '.gitignore'.
+  * Las carpetas 'src/components' y 'src/pages' estaban vacías.
+
+- Estado Final:
+  * Proyecto 100% operativo en React 19 + Vite.
+  * Enrutamiento dinámico mediante React Router DOM.
+  * Estado global del carrito mediante React Context API con persistencia en localStorage.
+  * Todos los formularios con validaciones en tiempo real (según la pauta de Duoc UC).
+  * Repositorio optimizado: '.gitignore' agregado y 'node_modules' removido del seguimiento de Git.
+  * Compilación validada sin errores ('npm run build' exitoso).
+
+
+3. ESTRUCTURA COMPLETA DEL PROYECTO:
+------------------------------------
+nutrivida/
+├── .gitignore                     # Ignora node_modules, dist y archivos del sistema
+├── Contexto.txt                   # Documento de contexto y guía técnica (este archivo)
+├── index.html                     # Punto de entrada HTML para Vite (monta React en #root)
+├── index_backup.html              # Respaldo del index.html estático original
+├── package.json                   # Scripts ("dev", "build", "preview") y dependencias
+├── vite.config.js                 # Configuración de Vite con plugin oficial de React
+├── public/                        # Archivos estáticos accesibles directamente
+│   └── assets/                    # Imágenes y CSS públicos
+├── assets/                        # Copia de recursos estáticos originales
+├── src/
+│   ├── main.jsx                   # Montaje principal de React (ReactDOM.createRoot)
+│   ├── App.jsx                    # Configuración de rutas (React Router) y Layout global
+│   ├── assets/                    # Recursos importados por los componentes
+│   │   ├── css/
+│   │   │   └── style.css          # Estilos unificados + clase .active-link
+│   │   └── img/                   # Imágenes de productos, blogs y banners
+│   ├── components/                # Componentes modulares y reutilizables
+│   │   ├── Header.jsx             # Barra superior, navegación con NavLink y contador de carrito
+│   │   ├── Footer.jsx             # Pie de página con enlaces y formulario de Newsletter
+│   │   └── ProductCard.jsx        # Tarjeta reutilizable de catálogo de producto
+│   ├── context/
+│   │   └── CartContext.jsx        # Estado global del carrito + sincronización con localStorage
+│   ├── data/
+│   │   ├── products.js            # Catálogo de datos de productos y formateador de precios
+│   │   └── blogs.js               # Artículos de blog con contenido estructurado
+│   └── pages/                     # Páginas / Vistas del sistema
+│       ├── Home.jsx               # Inicio: Banner Hero + Productos destacados
+│       ├── Productos.jsx          # Catálogo completo de productos
+│       ├── DetalleProducto.jsx    # Detalle con ruta dinámica (/productos/:id) y selector de cantidad
+│       ├── Nosotros.jsx           # Sobre la clínica: Misión y Visión (RF3)
+│       ├── Carrito.jsx            # Tabla del carrito con totales, ajuste de cantidades y eliminar
+│       ├── Blogs.jsx              # Listado de noticias y artículos
+│       ├── DetalleBlog.jsx        # Lectura individual de blog (/blogs/:id)
+│       ├── Contacto.jsx           # Formulario con validación de dominios institucionales
+│       ├── Login.jsx              # Formulario de inicio de sesión
+│       └── Registro.jsx           # Registro con validación de contraseñas, región y comuna
+
+
+4. CUMPLIMIENTO DE REQUERIMIENTOS FUNCIONALES (PAUTA / ERS):
+------------------------------------------------------------
+- RF1: Registro de Usuario ('Registro.jsx'):
+  * Validación de nombre obligatorio.
+  * Formato válido de correo electrónico y confirmación obligatoria coincidente.
+  * Contraseña mínima de 6 caracteres y confirmación coincidente.
+  * Selección obligatoria de Región y Comuna según pauta chilena.
+  * Redirección a Login tras registro exitoso.
+
+- RF2: Inicio de Sesión ('Login.jsx'):
+  * Campos controlados para correo y contraseña con feedback al usuario.
+
+- RF3: Navegación del Sitio ('Header.jsx' y 'App.jsx'):
+  * Enlaces SPA sin recargar la página: Home, Productos, Nosotros, Blogs, Contacto y Carrito.
+  * El enlace activo se destaca visualmente gracias a NavLink y la clase '.active-link'.
+
+- RF4: Listado de Productos ('Productos.jsx' y 'ProductCard.jsx'):
+  * Despliegue de tarjetas con imagen, nombre, categoría y precio en formato chileno ($24.990).
+  * Botón directo hacia el detalle del producto.
+
+- RF5: Detalle de Producto ('DetalleProducto.jsx'):
+  * Ruta dinámica '/productos/:id'.
+  * Muestra imagen amplia, categoría, descripción detallada y precio.
+  * Input numérico para elegir cantidad (1 a 99) y botón "Añadir al carrito" con aviso visual.
+
+- RF6 y RF7: Carrito de Compras y Persistencia ('CartContext.jsx' y 'Carrito.jsx'):
+  * Conservación automática del carrito en el navegador usando 'localStorage'.
+  * Modificación de cantidad de productos en tiempo real con recálculo de subtotales y total general.
+  * Eliminación de ítems del carrito.
+  * Contador global de productos reflejado inmediatamente en el Header: "🛒 Carrito (N)".
+  * Vista de estado vacío con botón para volver a la tienda.
+
+- RF8: Formulario de Contacto ('Contacto.jsx'):
+  * Nombre requerido con límite de 100 caracteres.
+  * Correo requerido con validación de dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com.
+  * Mensaje requerido con límite de 500 caracteres.
+  * Limpieza del formulario y mensaje de confirmación tras el envío.
+
+
+5. INSTRUCCIONES PARA EJECUTAR EN CUALQUIER COMPUTADORA:
+---------------------------------------------------------
+1. Requisitos:
+   - Tener instalado Node.js (versión 18 o superior recomendada).
+   - Tener Git instalado (si se clona desde GitHub).
+
+2. Pasos de instalación y ejecución:
+   a) Abrir una terminal en la carpeta raíz del proyecto ('nutrivida').
+   b) Instalar las dependencias del proyecto:
+      npm install
+
+   c) Iniciar el servidor de desarrollo en modo local:
+      npm run dev
+
+   d) Abrir el navegador en la URL indicada por la consola:
+      http://localhost:5173/
+
+3. Generar compilación para producción (Build):
+   npm run build
+
+4. Probar la versión de producción localmente:
+   npm run preview
+
+
+6. ESTADO DE CONTROL DE VERSIONES (GIT):
+----------------------------------------
+- Se creó el archivo '.gitignore' estándar para aplicaciones Node/React.
+- Se desindexó 'node_modules' del seguimiento de Git para evitar subir librerías pesadas.
+- Se creó el commit que consolida la migración:
+  "Migración a React: configuración Vite, rutas, páginas, contexto de carrito y componentes"
+- El árbol de trabajo local se encuentra limpio ('working tree clean'). Para enviar los cambios
+  a GitHub, basta con ejecutar:
+  git push origin main
+================================================================================
