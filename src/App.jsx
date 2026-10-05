@@ -26,7 +26,7 @@ export default function App() {
   return (
     <DataProvider>
       <CartProvider>
-                  <BrowserRouter basename="/nutrivida">
+        <BrowserRouter basename="/nutrivida">
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />

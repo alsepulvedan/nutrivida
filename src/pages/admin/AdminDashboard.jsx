@@ -4,7 +4,7 @@ import { useData } from '../../context/DataContext';
 
 export default function AdminDashboard() {
   // 1. Obtenemos los datos del contexto global
-  console.log('AdminDashboard data:', { productsLength: products.length, ordersLength: orders.length, usersLength: users.length, categoriesLength: categories.length, currentUser });
+  const { products, orders, users, categories, currentUser } = useData();
 
   // 2. Calculamos métricas en tiempo real
   // Total de ingresos sumando el total de todas las órdenes
