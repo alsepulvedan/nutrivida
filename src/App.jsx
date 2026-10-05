@@ -4,6 +4,7 @@ import { DataProvider } from './context/DataContext';
 import { CartProvider } from './context/CartContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import AdminDashboard from './pages/admin/AdminDashboard';
 
 import Home from './pages/Home';
 import Productos from './pages/Productos';
@@ -25,7 +26,7 @@ export default function App() {
   return (
     <DataProvider>
       <CartProvider>
-        <BrowserRouter>
+                  <BrowserRouter basename="/nutrivida">
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -43,6 +44,7 @@ export default function App() {
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
+            <Route path="/admin" element={<AdminDashboard />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Footer />
