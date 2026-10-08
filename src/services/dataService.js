@@ -5,6 +5,11 @@
  * Implementa operaciones CRUD completas sobre Productos, Categorías, Usuarios y Órdenes.
  */
 
+import producto1 from '../assets/img/producto1.jpg';
+import producto2 from '../assets/img/producto2.jpg';
+import producto3 from '../assets/img/producto3.jpg';
+import producto4 from '../assets/img/producto4.jpg';
+
 const STORAGE_KEYS = {
   PRODUCTS: 'nutrivida_products',
   CATEGORIES: 'nutrivida_categories',
@@ -19,26 +24,26 @@ const INITIAL_CATEGORIES = [
     id: 'proteinas',
     nombre: 'Proteínas / Recuperación',
     descripcion: 'Suplementos para recuperación muscular y aporte proteico de alto valor biológico.',
-    imagen: '/assets/img/producto1.jpg'
+    imagen: producto1
   },
   {
     id: 'fuerza',
     nombre: 'Fuerza / Rendimiento',
     descripcion: 'Fórmulas puras y creatinas para potenciar entrenamientos de alta exigencia.',
-    imagen: '/assets/img/producto2.jpg'
+    imagen: producto2
   },
   {
     id: 'bienestar',
     nombre: 'Salud / Bienestar',
     descripcion: 'Multivitamínicos y micronutrientes para el cuidado del sistema inmune.',
-    imagen: '/assets/img/producto3.jpg'
+    imagen: producto3
   },
   {
     id: 'cardiovascular',
     nombre: 'Salud Cardiovascular',
     descripcion: 'Ácidos grasos esenciales destilados para proteger corazón y cerebro.',
-    imagen: '/assets/img/producto4.jpg'
-  }
+    imagen: producto4
+  }  
 ];
 
 const INITIAL_PRODUCTS = [
@@ -48,7 +53,7 @@ const INITIAL_PRODUCTS = [
     categoria: 'Proteínas / Recuperación',
     categoriaId: 'proteinas',
     precio: 24990,
-    imagen: '/assets/img/producto1.jpg',
+    imagen: producto1,
     descripcion:
       'Suplemento alimenticio a base de proteína concentrada de suero de leche de alta calidad. Ideal para favorecer la recuperación muscular post-entrenamiento.',
     stock: 18,
@@ -63,7 +68,7 @@ const INITIAL_PRODUCTS = [
     categoria: 'Fuerza / Rendimiento',
     categoriaId: 'fuerza',
     precio: 18990,
-    imagen: '/assets/img/producto2.jpg',
+    imagen: producto2,
     descripcion:
       'Creatina monohidratada pura de alta absorción. Ayuda a incrementar la fuerza muscular y potencia el rendimiento en entrenamientos de alta intensidad.',
     stock: 4, // Estado crítico para demostración en módulo administrativo
@@ -78,7 +83,7 @@ const INITIAL_PRODUCTS = [
     categoria: 'Salud / Bienestar',
     categoriaId: 'bienestar',
     precio: 12500,
-    imagen: '/assets/img/producto3.jpg',
+    imagen: producto3,
     descripcion:
       'Complejo multivitamínico y mineral completo diseñado para cubrir las necesidades diarias de adultos activos. Apoya el sistema inmunológico.',
     stock: 25,
@@ -93,7 +98,7 @@ const INITIAL_PRODUCTS = [
     categoria: 'Salud Cardiovascular',
     categoriaId: 'cardiovascular',
     precio: 14990,
-    imagen: '/assets/img/producto4.jpg',
+    imagen: producto4,
     descripcion:
       'Ácidos grasos esenciales EPA y DHA destilados molecularmente. Promueve una función cardiovascular saludable y protege la vista.',
     stock: 3, // Estado crítico para demostración
@@ -108,7 +113,7 @@ const INITIAL_PRODUCTS = [
     categoria: 'Proteínas / Recuperación',
     categoriaId: 'proteinas',
     precio: 16990,
-    imagen: '/assets/img/producto1.jpg',
+    imagen: producto1,
     descripcion:
       'Aminoácidos de cadena ramificada micronizados para acelerar la síntesis proteica y disminuir el catabolismo durante el ejercicio.',
     stock: 12,
@@ -123,7 +128,7 @@ const INITIAL_PRODUCTS = [
     categoria: 'Salud / Bienestar',
     categoriaId: 'bienestar',
     precio: 15990,
-    imagen: '/assets/img/producto3.jpg',
+    imagen: producto3,
     descripcion:
       'Colágeno hidrolizado tipo I y III enriquecido con Vitamina C pura. Promueve la salud articular, firmeza en la piel y fortalecimiento de tendones.',
     stock: 2, // Estado crítico
@@ -187,7 +192,7 @@ const INITIAL_ORDERS = [
         precio: 21240,
         cantidad: 1,
         subtotal: 21240,
-        imagen: '/assets/img/producto1.jpg'
+        imagen: producto1
       },
       {
         id: 2,
@@ -195,7 +200,7 @@ const INITIAL_ORDERS = [
         precio: 18990,
         cantidad: 1,
         subtotal: 18990,
-        imagen: '/assets/img/producto2.jpg'
+        imagen: producto2
       }
     ],
     total: 40230,

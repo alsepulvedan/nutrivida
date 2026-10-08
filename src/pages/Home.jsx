@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useData } from '../context/DataContext';
 import ProductCard from '../components/ProductCard';
+import tienda from '../assets/img/tienda.jpg';
 
 export default function Home() {
   const { products } = useData();
@@ -26,7 +27,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-image">
-          <img src="/assets/img/tienda.jpg" alt="Imagen de la tienda" />
+          <img src={tienda} alt="Imagen de la tienda" />
         </div>
       </section>
 

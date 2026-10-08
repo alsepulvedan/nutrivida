@@ -4,6 +4,7 @@ import { useData } from '../context/DataContext';
 import { formatPrice } from '../services/dataService';
 import { useCart } from '../context/CartContext';
 
+
 export default function DetalleProducto() {
   const { id } = useParams();
   const { products } = useData();
