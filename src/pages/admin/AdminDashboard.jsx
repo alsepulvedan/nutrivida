@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
+import AdminNav from '../../components/AdminNav';
 
 export default function AdminDashboard() {
   // 1. Obtenemos los datos del contexto global
@@ -17,6 +18,8 @@ export default function AdminDashboard() {
 
   return (
     <div className="container py-4">
+      <AdminNav />
+
       {/* Encabezado del Dashboard */}
       <div className="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
         <div>
@@ -83,7 +86,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Alerta de Stock Crítico */}
-        <div className="col-12 col-sm-6 col-lg-3">
+        <Link to="/admin/productos/criticos" className="col-12 col-sm-6 col-lg-3 text-decoration-none">
           <div
             className={`card shadow-sm border-0 text-white h-100 ${
               productosCriticos.length > 0 ? 'bg-danger' : 'bg-secondary'
@@ -100,7 +103,7 @@ export default function AdminDashboard() {
               </div>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
 
       {/* 4. Módulos de Gestión (Accesos rápidos) */}
